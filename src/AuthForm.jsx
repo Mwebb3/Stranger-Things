@@ -29,7 +29,7 @@ const AuthForm = (props)=> {
       }
       <input value={ username } onChange={ ev => setUsername(ev.target.value )}/>
       <input value={ password } onChange={ ev => setPassword(ev.target.value )}/>
-      <button>{ props.txt }</button>
+      <button disabled={username.length < 1 && password.length < 1}>{ props.txt }</button>
     </form>
   );
 };

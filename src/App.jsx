@@ -5,6 +5,10 @@ import CreatePost from './CreatePost';
 import Posts from './Posts';
 import Post from './Post';
 import AboutUs from './AboutUs';
+import Home from './Home';
+import Contact from './Contact';
+
+
 
 import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
 
@@ -63,12 +67,14 @@ function App() {
       {
         auth.username ? (
           <div>
+            <Home/>
             <h1>
               Welcome { auth.username }
               <button onClick={ logout }>Logout</button>
             </h1>
             <Link to='/posts/create'>Create A Post</Link>
             <Link to='/about_us'>About Us</Link>
+            <Link to='/contact'>Contact</Link>
             <Routes>
               <Route path='/posts/create' element={ <CreatePost createPost={ createPost } />} />
             </Routes>
@@ -83,8 +89,10 @@ function App() {
       }
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
+        <Route path="/" element={<Home/>}/>
         <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
+        <Route path="/contact" element={<Contact/>}/>
       </Routes>
     </>
   )
