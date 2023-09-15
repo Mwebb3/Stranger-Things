@@ -10,3 +10,11 @@ form > * {
 .mine {
   font-weight: bold;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: cornflowerblue;
+  padding: 2rem;
+}
+

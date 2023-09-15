@@ -10,13 +10,19 @@ import Contact from './Contact';
 
 
 
+
+
 import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [auth, setAuth] = useState({});
   const [posts, setPosts] = useState([]);
 
+  
+
   const navigate = useNavigate();
+
+
 
   useEffect(()=> {
     const fetchPosts = async()=> {
@@ -60,6 +66,19 @@ function App() {
     navigate(`/posts/${post._id}`);
   };
 
+  const UserNum = () => {
+    const filtered = posts.filter(post => post.author.username === auth.username).length
+    return(
+      <div>(
+        {filtered}
+        )</div>
+    )
+  }
+
+  const MostExpensive = () => {
+    
+  }
+  
 
   return (
     <>
@@ -69,12 +88,17 @@ function App() {
           <div>
             <Home/>
             <h1>
-              Welcome { auth.username }
+              Welcome { auth.username } 
+              <UserNum/>
               <button onClick={ logout }>Logout</button>
             </h1>
-            <Link to='/posts/create'>Create A Post</Link>
-            <Link to='/about_us'>About Us</Link>
-            <Link to='/contact'>Contact</Link>
+            <nav className="navbar">
+              <Link to="/">Home</Link>
+              <Link to='/posts/create'>Create A Post</Link>
+              <Link to='/about_us'>About Us</Link>
+              <Link to='/contact'>Contact</Link>
+              <Link to="/mostexpensive">Most Expensive Post</Link>
+            </nav>
             <Routes>
               <Route path='/posts/create' element={ <CreatePost createPost={ createPost } />} />
             </Routes>
@@ -87,13 +111,15 @@ function App() {
           </>
         )
       }
-      <Posts posts={ posts } auth={ auth }/>
-      <Routes>
+       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path="/contact" element={<Contact/>}/>
+        <Route path="/mostexpensive" element={<MostExpensive posts={posts}/>}/>
       </Routes>
+      <Posts posts={ posts } auth={ auth }/>
+     
     </>
   )
 }
