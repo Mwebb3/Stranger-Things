@@ -35,15 +35,15 @@
 (calling api's and update state)
 - [x] After a user deletes their posts, they should be navigated back to the / page.
 (navigation, router)
-- [] A user should be able to navigate to a **most expensive post** page which shows the post with the highest price.
+- [x] A user should be able to navigate to a **most expensive post** page which shows the post with the highest price.
 (math minimum, reduce, pass components, new page)
 - [-] A user should be able to update their posts on the detail page. 
 (understanding useEffect's dependency array)
 - [-] After a user updates their post, they should be navigated back to the / page.
 (navigation)
-- [] A user should be able to view the site on mobile device.
+- [x] A user should be able to view the site on mobile device.
 (flex-box)
-- [] Prices which are not numbers, should be displayed correctly.
+- [x] Prices which are not numbers, should be displayed correctly.
 (distinguishing between string and numeric data)
 - [x] A user should be able to add a location to their posts (see api documentation).
 (textbox for location)

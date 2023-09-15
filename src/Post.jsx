@@ -17,15 +17,15 @@ const Post = ({ posts, auth })=> {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const post = posts.find(post => post._id === id);
-    if(post){
-      setTitle(post.title)
-      setDescription(post.description)
-      setLocation(post.location)
-      setPrice(post.price)
-    }
-
-  }, [posts, id])
+      const post = posts.find(post => post._id === id);
+      if(post){
+        setTitle(post.title)
+        setDescription(post.description)
+        setLocation(post.location)
+        setPrice(post.price)
+      }
+  
+    }, [posts, id])
 
 
   async function handleDelete(){
@@ -41,9 +41,27 @@ const Post = ({ posts, auth })=> {
   navigate("/")
 }
 
-  const save = (ev) => {
+  const save = async(ev) => {
     ev.preventDefault()
     const post = {price, title, description, location};
+    try {
+      await updatePost(post);
+    } catch(error) {
+      setError(error)
+    }
+  }
+
+  const updatePost = async(post) => {
+    const token = window.localStorage.getItem('token');
+  const response = await axios.put(
+    `${BASE_URL}/posts/${id}`, 
+    post,
+    {
+      headers: {
+        authorization: `Bearer ${ token }`
+      }
+    }
+  )
   }
 
 

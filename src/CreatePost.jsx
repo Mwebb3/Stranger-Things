@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const CreatePost = ({ createPost })=> {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
   const [error, setError] = useState('');

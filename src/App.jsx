@@ -76,7 +76,26 @@ function App() {
   }
 
   const MostExpensive = () => {
-    
+    const prices = posts.map(post => {
+      if(post.price.includes("$")){
+        return post.price.slice(1)
+      }
+      else {
+        return post.price
+      }
+    })
+    prices.filter((price) => {
+      return !isNaN(price*1)
+    })
+    prices.sort((a,b) => {
+      return a-b
+    })
+    console.log(prices)
+    const max = prices[prices.length - 1]
+    console.log(max)
+    return (
+      <h1>Highest Number: {max}</h1>
+    )
   }
   
 

@@ -8,7 +8,7 @@ const Posts = ({ posts, auth })=> {
           return (
             <li key={ post._id } className={ post.author._id === auth._id ? 'mine': ''}>
               <Link to={`/posts/${post._id}`}>{ post.title }</Link> 
-              Price: ${ (post.price*1).toFixed(2)  } Location: {post.location} User: {post.author.username}
+              Price: ${isNaN(post.price*1) === true ? post.price : (post.price*1).toFixed(2)} Location: {post.location} User: {post.author.username}
             </li>
           );
         })

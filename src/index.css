@@ -18,3 +18,8 @@ form > * {
   padding: 2rem;
 }
 
+@media (max-width: 500px) {
+  nav {
+    flex-direction: column;
+  }
+}
